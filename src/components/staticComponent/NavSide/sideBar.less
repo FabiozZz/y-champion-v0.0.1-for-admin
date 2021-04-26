@@ -1,0 +1,45 @@
+@import '../../../utils/colors';
+
+.sideWrapper{
+  flex-direction: column;
+  padding: 0;
+  height: 100%;
+  border-right: 1px solid lightgray;
+  &__list{
+    flex-direction: column !important;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    &__accordClose{
+      &:hover{
+        border-right: 2px  solid @hover-button-color;
+      }
+    }
+    &__item{
+      padding: 15px 0;
+      &:hover{
+        border-right: 2px  solid @hover-button-color;
+      }
+      &:active{
+        background: @hover-button-color;
+      }
+      &__accordOpen{
+        background: #ebebeb;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        div{
+          display: flex;
+          flex-direction: column;
+          padding: 0 0 0 10px;
+          a:active{
+            background: @hover-button-color;
+          }
+        }
+      }
+    }
+  }
+}
+.list *{
+  width: 100%;
+}

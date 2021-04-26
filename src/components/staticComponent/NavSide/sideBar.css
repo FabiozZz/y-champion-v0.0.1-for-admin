@@ -1,0 +1,42 @@
+.sideWrapper {
+  flex-direction: column;
+  padding: 0;
+  height: 100%;
+  border-right: 1px solid lightgray;
+}
+.sideWrapper__list {
+  flex-direction: column !important;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+.sideWrapper__list__accordClose:hover {
+  border-right: 2px solid lightgreen;
+}
+.sideWrapper__list__item {
+  padding: 15px 0;
+}
+.sideWrapper__list__item:hover {
+  border-right: 2px solid lightgreen;
+}
+.sideWrapper__list__item:active {
+  background: lightgreen;
+}
+.sideWrapper__list__item__accordOpen {
+  background: #ebebeb;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+.sideWrapper__list__item__accordOpen div {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 0 10px;
+}
+.sideWrapper__list__item__accordOpen div a:active {
+  background: lightgreen;
+}
+.list * {
+  width: 100%;
+}
+/*# sourceMappingURL=sideBar.css.map */
