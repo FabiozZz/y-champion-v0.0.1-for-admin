@@ -47,12 +47,15 @@ export const ChaildTable = ()=> {
         const response =await getContentData(link)
         dispatch(setSectionData(await response.data))
     }
+
+    // асинхронная функия, в зависимости от выбранного Tab посылает запрос на сервер для
+    // получения утренних\вечерних занятий
+    // после получения очищает redux для того чтобы таблица стала пустой
     const toggleActiveDay =async (e)=>{
         const link = e.target.getAttribute('href');
         const response =await getCoursesChildDay(link);
         setCourses(await response.data)
         dispatch(removeSectionData());
-        // dispatch(setSectionData(await response.data))~
     }
 
     // функция фильтрации данных по штрих-коду
@@ -112,6 +115,9 @@ export const ChaildTable = ()=> {
             </React.Fragment>
         );
     });
+
+    // функция для формирования Tabs со списком утренних или вечерних занятий
+    // вместе с ссылкой для получения данных о видах единоборств
     const dayList = timeOfDay.map((el, index) => {
         return (
             <React.Fragment key={index}>
@@ -123,25 +129,32 @@ export const ChaildTable = ()=> {
         );
     });
 
-    // запускается при каждом рендеринге, запрашивает список видов единоборств и сохраняет в локальный стейт
+    // запускается при каждом рендеринге, просит время проведения занятий,
+    // получает и заносит в локальный стейт
     useEffect(async () => {
         const day = await getCoursesChild();
         setTimeOfDay(await day.data)
-        console.log(timeOfDay)
     },[]);
+
+    // прерывает запросы к базе при уничтожении компонента
     useEffect(async ()=>{
+        dispatch(removeSectionData());
         return ()=>{
             abortAxiosCalling();
         }
     },[])
+
     return (
         <div style={styles.root}>
+            {/*утро - вечер*/}
             <Nav variant={"tabs"} style={styles.navlink}>
                 {dayList}
             </Nav>
+            {/*виды единоборств*/}
             <Nav variant={"tabs"} className={'flex-nowrap'} style={styles.navlink}>
                 {courses&&courseList}
             </Nav>
+            {/*таблица с данными*/}
             <TableS date={sortByDate} kka={sortByKKA} fullName={filterByName} cardCode={filterByCode} data={currentSection}/>
         </div>
     );

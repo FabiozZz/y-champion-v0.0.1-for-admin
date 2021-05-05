@@ -7,7 +7,7 @@ import courses from '../assets/data/AdultClientAboniment/adultCourse.json';
 import greppling from '../assets/data/AdultClientAboniment/adultGrep.json'
 import person from '../assets/data/AdultClientAboniment/adultPerson.json'
 
-//chield
+//child
 import coursesChild from '../assets/data/ChieldClientAboniment/chieldCourse.json';
 
 //morning

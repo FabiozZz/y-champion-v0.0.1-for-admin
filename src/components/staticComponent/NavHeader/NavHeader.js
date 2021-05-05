@@ -2,12 +2,11 @@ import React from 'react';
 import './navHeader.css';
 import {Button, Form, FormControl, Image, Nav, Navbar, NavDropdown} from "react-bootstrap";
 
+
 export const NavHeader = (props)=> {
   return (
    <>
        <Navbar sticky={'top'} bg={'light'} expand="lg">
-           {/*<Navbar.Toggle aria-controls="basic-navbar-nav" />*/}
-           {/*<Navbar.Collapse id="basic-navbar-nav">*/}
                <Nav className="w-100 flex flex-row justify-content-around">
                    <Button onClick={props.open} variant={'dark'}>Menu</Button>
                    <Button variant={'outline-info'}>Action 1</Button>
@@ -22,7 +21,6 @@ export const NavHeader = (props)=> {
                    <Button variant={'outline-info'}>Action 3</Button>
                    <Button variant={'outline-info'}>Action 4</Button>
                </Nav>
-           {/*</Navbar.Collapse>*/}
        </Navbar>
    </>
   );

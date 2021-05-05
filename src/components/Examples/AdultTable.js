@@ -4,7 +4,7 @@ import {abortAxiosCalling,getContentData, getCourseAdult} from "../../Api/api";
 import {TableS} from "./Table/Table";
 import {NavLink} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {setSectionData} from "../../actions/sectionActions";
+import {removeSectionData, setSectionData} from "../../actions/sectionActions";
 
 /**
  * стили (возможно временные) для инлайнового css
@@ -106,9 +106,11 @@ export const AdultTable = ()=> {
     useEffect(async ()=>{
         const courses = await getCourseAdult();
         setCourses(await courses.data)
+        dispatch(removeSectionData());
 
         return ()=>{
             abortAxiosCalling();
+
         }
     },[])
     return (
