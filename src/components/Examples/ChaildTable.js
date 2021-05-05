@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {Nav} from "react-bootstrap";
-import {abortAxiosCalling,getContentData, getCourseAdult} from "../../Api/api";
+import {abortAxiosCalling, getContentData, getCourseAdult, getCoursesChild, getCoursesChildDay} from "../../Api/api";
 import {TableS} from "./Table/Table";
 import {NavLink} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {setSectionData} from "../../actions/sectionActions";
+import {removeSectionData, setSectionData} from "../../actions/sectionActions";
 
 /**
  * стили (возможно временные) для инлайнового css
@@ -27,7 +27,7 @@ const styles = {
  * @returns {JSX.Element}
  * @constructor
  */
-export const AdultTable = ()=> {
+export const ChaildTable = ()=> {
     const dispatch = useDispatch();
 
     // получаю массив клиентов с redux
@@ -36,12 +36,23 @@ export const AdultTable = ()=> {
     // константы для хранения и установки видов единоборств
     const [courses,setCourses] = useState([]);
 
+    //константы для установки утреннего и вечернего расписания
+    const [timeOfDay,setTimeOfDay] = useState([]);
+
     // асинхронная функия, в зависимости от выбранного Tab посылает запрос на сервер для получения данных
     // после получения диспатчит данные в redux
     const toggleActiveItem =async (e)=>{
         const link = e.target.getAttribute('href');
+        console.log(link)
         const response =await getContentData(link)
         dispatch(setSectionData(await response.data))
+    }
+    const toggleActiveDay =async (e)=>{
+        const link = e.target.getAttribute('href');
+        const response =await getCoursesChildDay(link);
+        setCourses(await response.data)
+        dispatch(removeSectionData());
+        // dispatch(setSectionData(await response.data))~
     }
 
     // функция фильтрации данных по штрих-коду
@@ -95,7 +106,17 @@ export const AdultTable = ()=> {
         return (
             <React.Fragment key={index}>
                 <Nav.Item>
-                    <Nav.Link onClick={toggleActiveItem} style={styles.navlink} as={NavLink} to={`/adult/${el.uri}`}
+                    <Nav.Link onClick={toggleActiveItem} style={styles.navlink} as={NavLink} to={`/child/${el.uri}`}
+                              eventKey={index + 1}>{el.name}</Nav.Link>
+                </Nav.Item>
+            </React.Fragment>
+        );
+    });
+    const dayList = timeOfDay.map((el, index) => {
+        return (
+            <React.Fragment key={index}>
+                <Nav.Item>
+                    <Nav.Link onClick={toggleActiveDay} style={styles.navlink} as={NavLink} to={`/child/${el.uri}`}
                               eventKey={index + 1}>{el.name}</Nav.Link>
                 </Nav.Item>
             </React.Fragment>
@@ -103,10 +124,12 @@ export const AdultTable = ()=> {
     });
 
     // запускается при каждом рендеринге, запрашивает список видов единоборств и сохраняет в локальный стейт
+    useEffect(async () => {
+        const day = await getCoursesChild();
+        setTimeOfDay(await day.data)
+        console.log(timeOfDay)
+    },[]);
     useEffect(async ()=>{
-        const courses = await getCourseAdult();
-        setCourses(await courses.data)
-
         return ()=>{
             abortAxiosCalling();
         }
@@ -114,7 +137,10 @@ export const AdultTable = ()=> {
     return (
         <div style={styles.root}>
             <Nav variant={"tabs"} style={styles.navlink}>
-                {courseList}
+                {dayList}
+            </Nav>
+            <Nav variant={"tabs"} className={'flex-nowrap'} style={styles.navlink}>
+                {courses&&courseList}
             </Nav>
             <TableS date={sortByDate} kka={sortByKKA} fullName={filterByName} cardCode={filterByCode} data={currentSection}/>
         </div>

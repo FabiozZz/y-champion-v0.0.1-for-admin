@@ -9,6 +9,7 @@ import {ExampleDiagrams} from "./Diagrams/ExampleDiagrams";
 import {AdultTable} from "./Examples/AdultTable";
 import Sidebar from "react-sidebar";
 import React, {useState} from "react";
+import {ChaildTable} from "./Examples/ChaildTable";
 
 function App() {
     const [sidebarOpen,setSidebarOpen] = useState(false);
@@ -61,6 +62,7 @@ function App() {
                                     <Route path={'/exampleTable'} render={()=><ExampleTable/>}/>
                                     <Route path={'/exampleDiagPie'} render={()=><ExampleDiagrams/>}/>
                                     <Route path={'/adult'} render={()=><AdultTable/>}/>
+                                    <Route path={'/child'} render={()=><ChaildTable/>}/>
                                 </Switch>
                             </Col>
                         </Row>

@@ -11,17 +11,15 @@ export const SideBar = () => {
             <Nav className={'sideWrapper__list mt-2'}>
                 <Nav.Link className={'sideWrapper__list__item'} as={NavLink} to={'/home1'}>Табличка 1</Nav.Link>
                 <Nav.Link className={'sideWrapper__list__item'} as={NavLink} to={'/home2'}>Табличка 2</Nav.Link>
-                <Nav.Link className={'sideWrapper__list__item'} as={NavLink} to={'/home3'}>Табличка 3</Nav.Link>
                 <Nav.Link className={'sideWrapper__list__item'} as={NavLink} to={'/exampleDiagPie'}>Пример диаграммы</Nav.Link>
                 <Accordion as={'div'} className={'sideWrapper__list__accordClose'}>
                     <Accordion.Toggle as={Nav.Link} eventKey="1">
-                        сворачивается
+                        Абонименты
                     </Accordion.Toggle>
                     <Accordion.Collapse className={'sideWrapper__list__item__accordOpen'} eventKey="1">
                         <Card.Body as={'div'}>
-                            <Nav.Link as={NavLink} to={'/exampleTable'}>Пример таблицы</Nav.Link>
                             <Nav.Link as={NavLink} to={'/adult'}>Взрослые</Nav.Link>
-                            <Nav.Link as={NavLink} to={'/some3'}>some 3</Nav.Link>
+                            <Nav.Link as={NavLink} to={'/child'}>Дети</Nav.Link>
                         </Card.Body>
                     </Accordion.Collapse>
                 </Accordion>

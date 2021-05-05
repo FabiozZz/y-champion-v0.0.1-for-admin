@@ -1,0 +1,62 @@
+[
+  {
+    "cardCode": "0000000028790",
+    "expireIn": "15.11.2020",
+    "countBuyAboniment": 1,
+    "fullName": "Гомолко Вероника Сергеевна",
+    "phone": "89288455023",
+    "course": "Развивайка",
+    "dateFirsTrainer": "18.10.2020",
+    "address": "ул. Суздальскасая 18",
+    "birthday": "05.08.2018",
+    "howKnow": "знакомые"
+  },
+  {
+    "cardCode": "000000029766",
+    "expireIn": "активировать",
+    "countBuyAboniment": 1,
+    "fullName": "Сухобрус София Ильинична",
+    "phone": "89182742280",
+    "course": "Развивайка",
+    "dateFirsTrainer": "29.11.2020",
+    "address": "ул. С. Есенина 110, к. 2",
+    "birthday": "20.10.2017",
+    "howKnow": "конкурс"
+  },
+  {
+    "cardCode": "0000000029209",
+    "expireIn": "активировать",
+    "countBuyAboniment": 1,
+    "fullName": "Хухлаев Петр Алексеевич",
+    "phone": "89183317446",
+    "course": "Развивайка",
+    "dateFirsTrainer": "06.12.2020",
+    "address": "ул. Ангарский проезд д.13",
+    "birthday": "22.12.2017",
+    "howKnow": "баннер"
+  },
+  {
+    "cardCode": "0000000027694",
+    "expireIn": "активировать",
+    "countBuyAboniment": 1,
+    "fullName": "Заболоцкий Андрей Владимирович",
+    "phone": "89826200120",
+    "course": "Развивайка",
+    "dateFirsTrainer": "21.12.2020",
+    "address": "ул. Московская 57/1",
+    "birthday": "10.03.2017",
+    "howKnow": ""
+  },
+  {
+    "cardCode": "000000029162",
+    "expireIn": "активировать",
+    "countBuyAboniment": 1,
+    "fullName": "Волдин Алексей Евгеньевич",
+    "phone": "89080698457",
+    "course": "Маленький Гимнаст",
+    "dateFirsTrainer": "16.12.2020",
+    "address": "ул. Климова 9",
+    "birthday": "11.10.2017",
+    "howKnow": "интернет"
+  }
+]

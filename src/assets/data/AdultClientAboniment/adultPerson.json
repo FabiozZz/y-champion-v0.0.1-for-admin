@@ -1,0 +1,26 @@
+[
+  {
+    "cardCode": "",
+    "expireIn": "",
+    "countBuyAboniment": 5,
+    "fullName": "Калашников Илья Викторович",
+    "phone": "89530900710",
+    "course": "Персонально Андрей",
+    "dateFirsTrainer": "03.03.2020",
+    "address": "Есенина 84",
+    "birthday": "05.11.1992",
+    "howKnow": "интернет"
+  },
+  {
+    "cardCode": "",
+    "expireIn": "",
+    "countBuyAboniment": 5,
+    "fullName": "Паникар Алексей Владимирович",
+    "phone": "89875053852",
+    "course": "Персонально Станислав",
+    "dateFirsTrainer": "30.04.1986",
+    "address": "",
+    "birthday": "",
+    "howKnow": "ходит на Дальнюю"
+  }
+]

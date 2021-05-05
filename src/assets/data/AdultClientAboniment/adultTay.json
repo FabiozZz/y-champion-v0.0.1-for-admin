@@ -169,7 +169,7 @@
   },
   {
     "cardCode": "рубин",
-    "expireIn": "12.10.20020",
+    "expireIn": "12.10.2020",
     "countBuyAboniment": 14,
     "fullName": "Кириенко Виталий Андреевич",
     "phone": "89384310132",
@@ -373,7 +373,7 @@
   },
   {
     "cardCode": "",
-    "expireIn": "28.09.020",
+    "expireIn": "28.09.2020",
     "countBuyAboniment": 2,
     "fullName": "Аржаненко  Владислав Вадимович",
     "phone": "89384835770",
@@ -733,7 +733,7 @@
   },
   {
     "cardCode": "0000000029421",
-    "expireIn": "08.07.2020",
+    "expireIn": "04.05.2021",
     "countBuyAboniment": 1,
     "fullName": "Мамотенко Илья Юрьевич ",
     "phone": "89531116669",
@@ -745,7 +745,7 @@
   },
   {
     "cardCode": "000000002837",
-    "expireIn": "23.03.2020",
+    "expireIn": "23.03.2022",
     "countBuyAboniment": 1,
     "fullName": "Герасимов Артем Романович",
     "phone": "89186966098",
@@ -770,7 +770,7 @@
   {
     "cardCode": "",
     "expireIn": "разово",
-    "countBuyAboniment": null,
+    "countBuyAboniment": 0,
     "fullName": "Евтушенко Иван Владимирович",
     "phone": "89284151094",
     "course": "Тайский Бокс",
@@ -782,7 +782,7 @@
   {
     "cardCode": "",
     "expireIn": "разово",
-    "countBuyAboniment": null,
+    "countBuyAboniment": 0,
     "fullName": "Бондарев Александр Сергееевич",
     "phone": "89183714070",
     "course": "Тайский Бокс",
@@ -794,7 +794,7 @@
   {
     "cardCode": "",
     "expireIn": "разово",
-    "Колличество купленных абониментов": null,
+    "countBuyAboniment": 0,
     "fullName": "Илларионов Олег Владиславович",
     "phone": "89164509444",
     "course": "Тайский Бокс",
@@ -806,11 +806,11 @@
   {
     "cardCode": "0000000030427",
     "expireIn": "05.12.2020",
-    "Колличество купленных абониментов": 1,
+    "countBuyAboniment": 1,
     "fullName": "Дробот Данил Владимирирович",
     "phone": "89628542062",
     "course": "Тайский Бокс",
-    "dateFirsTrainer": "29.10.2020",
+    "dateFirsTrainer": "29.10.2022",
     "address": "проезд Репина",
     "birthday": "30.11.1994",
     "howKnow": "инстаграмм"
@@ -818,7 +818,7 @@
   {
     "cardCode": "",
     "expireIn": "разово",
-    "Колличество купленных абониментов": null,
+    "countBuyAboniment": 0,
     "fullName": "Шишов Юрий Олегович",
     "phone": "89182569229",
     "course": "Тайский Бокс",

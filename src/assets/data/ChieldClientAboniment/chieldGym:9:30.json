@@ -1,0 +1,50 @@
+[
+  {
+    "cardCode": "000000029056",
+    "expireIn": "20.12.2020",
+    "countBuyAboniment": 1,
+    "fullName": "Воробьёва Полина Константиновна",
+    "phone": "89184453223",
+    "course": "Гимнастика",
+    "dateFirsTrainer": "18.07.2020",
+    "address": "ул. Суздальская, д.1, кв. 22",
+    "birthday": "23.01.2012",
+    "howKnow": "асфальт"
+  },
+  {
+    "cardCode": "0000000030229",
+    "expireIn": "16.12.2020",
+    "countBuyAboniment": 2,
+    "fullName": "Абрамов Михаил",
+    "phone": "89618524273",
+    "course": "Гимнастика",
+    "dateFirsTrainer": "15.11.2020",
+    "address": "ул.им. Евгении Жигуленко д. 5 кв.1",
+    "birthday": "19.03.2010",
+    "howKnow": "знакомые Пащенко"
+  },
+  {
+    "cardCode": "000000029773",
+    "expireIn": "активировать",
+    "countBuyAboniment": 1,
+    "fullName": "Марахотин Данила Вячеславович",
+    "phone": "89371673391",
+    "course": "Гимнастика/Акробатика",
+    "dateFirsTrainer": "13.12.2020",
+    "address": "ул. Ивановская 85-7",
+    "birthday": "08.02.2011",
+    "howKnow": "з.с (яндекс)"
+  },
+  {
+    "cardCode": "0000000027847",
+    "expireIn": "активировать",
+    "countBuyAboniment": 1,
+    "fullName": "Заец София  Владиславовна",
+    "phone": "89892101119",
+    "course": "Гимнасты",
+    "dateFirsTrainer": "08.01.2021",
+    "address": "ул. Рахманинова д. 22 кв. 51",
+    "birthday": "21.09.2013",
+    "howKnow": "знакомые"
+  }
+]

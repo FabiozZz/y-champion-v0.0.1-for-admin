@@ -2,7 +2,7 @@
   {
     "cardCode": "",
     "expireIn": "разово",
-    "countBuyAboniment": null,
+    "countBuyAboniment": 0,
     "fullName": "Берлизов Александр Николаевич",
     "phone": "89883129436",
     "course": "Бокс",
@@ -14,7 +14,7 @@
   {
     "cardCode": "",
     "expireIn": "разово",
-    "countBuyAboniment": null,
+    "countBuyAboniment": 0,
     "fullName": "Войтов Михаил Васильевич",
     "phone": "89892677252",
     "course": "Бокс",
@@ -434,7 +434,7 @@
   {
     "cardCode": "",
     "expireIn": "разово",
-    "countBuyAboniment": null,
+    "countBuyAboniment": 0,
     "fullName": "Леонов Егор Константинович ",
     "phone": "89684639669",
     "course": "Бокс",
@@ -446,7 +446,7 @@
   {
     "cardCode": "",
     "expireIn": "разово",
-    "countBuyAboniment": null,
+    "countBuyAboniment": 0,
     "fullName": "Давлитов Фарух Содикович",
     "phone": "89819338318",
     "course": "Бокс",
@@ -458,7 +458,7 @@
   {
     "cardCode": "",
     "expireIn": "разово",
-    "countBuyAboniment": null,
+    "countBuyAboniment": 0,
     "fullName": "Поспелов Сергей Владимирович",
     "phone": "89898099220",
     "course": "Бокс",
@@ -470,7 +470,7 @@
   {
     "cardCode": "",
     "expireIn": "разово",
-    "countBuyAboniment": null,
+    "countBuyAboniment": 0,
     "fullName": "Сахаров Илья Андреевич",
     "phone": "89115041331",
     "course": "Бокс",
