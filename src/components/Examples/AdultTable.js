@@ -30,47 +30,133 @@ const styles = {
 export const AdultTable = ()=> {
     const dispatch = useDispatch();
 
-    // получаю массив клиентов с redux
+    /**
+     * снлектор полученный из redux
+     * @type {[]|*}
+     */
     let currentSection = useSelector(state => state.section.currentSection)
 
-    // константы для хранения и установки видов единоборств
-    const [courses,setCourses] = useState([]);
+    /**
+     * сортирует данные в зависимости от флага, переключение флага идет автоматически внутри фильтра
+     */
+    const [flagAscDesc,setFlagAscDesc] = useState({
+        card: 'asc',
+        name: 'asc',
+        kka: 'asc',
+        date: 'asc'
+    })
 
-    // асинхронная функия, в зависимости от выбранного Tab посылает запрос на сервер для получения данных
-    // после получения диспатчит данные в redux
+    /**
+     * константы для хранения и установки видов единоборств
+     */
+    const [courses, setCourses] = useState([]);
+
+    const [search,setSearch] = useState()
+
+    const filterColumn = (e) => {
+        return (<input type="text" />)
+    };
+
+
+    /**
+     *    асинхронная функия, в зависимости от выбранного Tab посылает запрос на сервер для получения данных
+     *    после получения диспатчит данные в redux
+     * @param e
+     * @returns {Promise<void>}
+     */
     const toggleActiveItem =async (e)=>{
         const link = e.target.getAttribute('href');
         const response =await getContentData(link)
         dispatch(setSectionData(await response.data))
     }
 
-    // функция фильтрации данных по штрих-коду
+    /**
+     * функция фильтрации данных по штрих-коду
+     */
     const filterByCode = () => {
-        let copySection = currentSection.sort((a,b) =>a.cardCode.replace(/[a-zа-я]/gi,'') > b.cardCode.replace(/[a-zа-я]/gi,'')?-1:1)
-        dispatch(setSectionData(copySection))
+        let copySection;
+        if (flagAscDesc.card === 'asc') {
+            copySection = currentSection.sort((a,b) =>a.cardCode.replace(/[a-zа-я]/gi,'') > b.cardCode.replace(/[a-zа-я]/gi,'')?-1:1);
+            dispatch(setSectionData(copySection))
+            setFlagAscDesc(prevState => ({
+                ...prevState,
+                card: 'desc'
+        }));
+        }else {
+            copySection = currentSection.sort((a,b) =>a.cardCode.replace(/[a-zа-я]/gi,'') < b.cardCode.replace(/[a-zа-я]/gi,'')?-1:1);
+            dispatch(setSectionData(copySection))
+            setFlagAscDesc(prevState => ({
+                ...prevState,
+                card:'asc'
+            }));
+        }
     };
 
-    // функция фильтрации данных по имени
+    /**
+     * функция фильтрации данных по имени
+     */
     const filterByName = () => {
-        let copySection = currentSection.sort((a,b) =>a.fullName > b.fullName?1:-1)
-        dispatch(setSectionData(copySection))
+        let copySection;
+        if (flagAscDesc.name === 'asc') {
+            copySection = currentSection.sort((a,b) =>a.fullName > b.fullName?1:-1)
+            dispatch(setSectionData(copySection))
+            setFlagAscDesc(prevState => ({
+                ...prevState,
+                name:'desc'
+            }))
+        }else{
+            copySection = currentSection.sort((a,b) =>a.fullName < b.fullName?1:-1)
+
+            dispatch(setSectionData(copySection))
+            setFlagAscDesc(prevState => ({
+                ...prevState,
+                name:'asc'
+            }))
+
+        }
     };
 
-    // функция фильтрации данных в зависимости от купленных абониментов
+    /**
+     * функция фильтрации данных в зависимости от купленных абониментов
+     */
     const sortByKKA = () => {
-        let copySection = currentSection.sort((a,b) =>Number(a.countBuyAboniment) > Number(b.countBuyAboniment)?-1:1)
-        dispatch(setSectionData(copySection))
+        let copySection;
+        if (flagAscDesc.kka === 'asc') {
+            copySection = currentSection.sort((a,b) =>Number(a.countBuyAboniment) > Number(b.countBuyAboniment)?-1:1);
+            dispatch(setSectionData(copySection))
+            setFlagAscDesc(prevState => ({
+                ...prevState,
+                kka:'desc'
+            }))
+        }else{
+            copySection = currentSection.sort((a,b) =>Number(a.countBuyAboniment) < Number(b.countBuyAboniment)?-1:1);
+            dispatch(setSectionData(copySection))
+            setFlagAscDesc(prevState => ({
+                ...prevState,
+                kka:'asc'
+            }))
+
+        }
     };
 
-    // функция фильтрации данных по дате окончания абонимента
+    /**
+     * функция фильтрации данных по дате окончания абонимента
+     */
     const sortByDate = () => {
         let copySection = currentSection.sort((a, b) => {
-            // очистка если в ячейке вместо даты стоит какое либо слово
+            /**
+             * очистка если в ячейке вместо даты стоит какое либо слово
+             */
             let dateA = a.expireIn.replace(/[a-zа-я]/gi, '');
             let dateB = b.expireIn.replace(/[a-zа-я]/gi, '');
 
-            // если вместо даты было слово, идет проверка что эта строка пуста
-            // и вместо нее вставляется заведомо завышенная дата чтобы эта ячейка осталась в конце списка
+
+
+            /**
+             * если вместо даты было слово, идет проверка что эта строка пуста
+             * и вместо нее вставляется заведомо завышенная дата
+             * чтобы эта ячейка осталась в конце списка
+             */
             if (dateA === '') {
                 dateA = '01.01.3000';
             }
@@ -78,19 +164,35 @@ export const AdultTable = ()=> {
                 dateB = '01.01.3000';
             }
 
-            // формируется строка по шаблону, "день.месяц.год -> год-месяц-день"
+            /**
+             * формируется строка по шаблону, "день.месяц.год -> год-месяц-день"
+             */
             dateA = dateA.replace(/(\d{2}).(\d{2}).(\d{4})/gi, '$3-$2-$1')
             dateB = dateB.replace(/(\d{2}).(\d{2}).(\d{4})/gi, '$3-$2-$1')
 
-            return +new Date(dateA) > +new Date(dateB) ? 1 : -1;
+            if (flagAscDesc.date === 'asc') {
+                setFlagAscDesc(prevState => ({
+                    ...prevState,
+                    date:'desc'
+                }))
+                return +new Date(dateA) < +new Date(dateB) ? 1 : -1;
+            }else{
+                setFlagAscDesc(prevState => ({
+                    ...prevState,
+                    date:'asc'
+                }))
+                return +new Date(dateA) > +new Date(dateB) ? 1 : -1;
+            }
         });
 
         dispatch(setSectionData(copySection))
     };
 
-
-    // функция для формирования Tabs со списком видов единоборств
-    // вместе с ссылкой для получения данных
+    /**
+     * функция для формирования Tabs со списком видов единоборств
+     * вместе с ссылкой для получения данных
+     * @type {unknown[]}
+     */
     const courseList = courses.map((el, index) => {
         return (
             <React.Fragment key={index}>
@@ -102,7 +204,9 @@ export const AdultTable = ()=> {
         );
     });
 
-    // запускается при каждом рендеринге, запрашивает список видов единоборств и сохраняет в локальный стейт
+    /**
+     * запускается при каждом рендеринге, запрашивает список видов единоборств и сохраняет в локальный стейт
+     */
     useEffect(async ()=>{
         const courses = await getCourseAdult();
         setCourses(await courses.data)
@@ -113,12 +217,13 @@ export const AdultTable = ()=> {
 
         }
     },[])
+
     return (
         <div style={styles.root}>
             <Nav variant={"tabs"} style={styles.navlink}>
                 {courseList}
             </Nav>
-            <TableS date={sortByDate} kka={sortByKKA} fullName={filterByName} cardCode={filterByCode} data={currentSection}/>
+            <TableS filter={filterColumn} date={sortByDate} kka={sortByKKA} fullName={filterByName} cardCode={filterByCode} data={currentSection}/>
         </div>
     );
 }
