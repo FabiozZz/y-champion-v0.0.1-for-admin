@@ -34,18 +34,19 @@ import cTay18 from '../assets/data/ChieldClientAboniment/chieldTay:16:30.json';
 
 const mock = new MockAdapter(axios);
 
-//adult
+//взрослые клиенты по группам
 mock.onGet('/adult/tay').reply(200, tayB);
 mock.onGet('/adult/boks').reply(200, boks);
 mock.onGet('/adult/grep').reply(200, greppling);
 mock.onGet('/adult/personal').reply(200, person);
 mock.onGet('/getAdult/courses').reply(200, courses);
-//chield
+//дети - клиенты
 
+// утренняя или вечерняя смена
 mock.onGet('/getChield').reply(200, coursesChild);
-//morning
 
-//courseList
+
+// список ссылок для
 mock.onGet('/child/morning').reply(200, morning);
 
 //course

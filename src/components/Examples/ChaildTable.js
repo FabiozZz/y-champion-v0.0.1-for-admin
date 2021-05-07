@@ -33,18 +33,20 @@ export const ChaildTable = ()=> {
     /**
      * сортирует данные в зависимости от флага, переключение флага идет автоматически внутри фильтра
      */
-    const [flagAscDesc,setFlagAscDesc] = useState({
+    const [flagAscDesc, setFlagAscDesc] = useState({
         card: 'asc',
         name: 'asc',
         kka: 'asc',
         date: 'asc'
-    })
+    });
 
     /**
      * получаю массив клиентов с redux
+     * и получаю пустой массив с фильтрами
      * @type {[]|*}
      */
-    let currentSection = useSelector(state => state.section.currentSection)
+    let currentSection = useSelector(state => state.section.currentSection);
+    let filterSection = useSelector(state => state.section.filterSection);
 
     /**
      * константы для хранения и установки видов единоборств
@@ -85,7 +87,7 @@ export const ChaildTable = ()=> {
     /**
      * функция фильтрации данных по штрих-коду
      */
-    const filterByCode = () => {
+    const sortByCode = () => {
         let copySection;
         if (flagAscDesc.card === 'asc') {
             copySection = currentSection.sort((a,b) =>a.cardCode.replace(/[a-zа-я]/gi,'') > b.cardCode.replace(/[a-zа-я]/gi,'')?-1:1)
@@ -108,7 +110,7 @@ export const ChaildTable = ()=> {
     /**
      * функция фильтрации данных по имени
      */
-    const filterByName = () => {
+    const sortByName = () => {
         let copySection;
         if (flagAscDesc.name === 'asc') {
             copySection = currentSection.sort((a,b) =>a.fullName > b.fullName?1:-1)
@@ -162,8 +164,6 @@ export const ChaildTable = ()=> {
              */
             let dateA = a.expireIn.replace(/[a-zа-я]/gi, '');
             let dateB = b.expireIn.replace(/[a-zа-я]/gi, '');
-
-
 
             /**
              * если вместо даты было слово, идет проверка что эта строка пуста
@@ -263,7 +263,9 @@ export const ChaildTable = ()=> {
                 {courses&&courseList}
             </Nav>
             {/*таблица с данными*/}
-            <TableS date={sortByDate} kka={sortByKKA} fullName={filterByName} cardCode={filterByCode} data={currentSection}/>
+            <TableS date={sortByDate} kka={sortByKKA}
+                    fullName={sortByName} cardCode={sortByCode}
+                    data={filterSection[0] === undefined?currentSection:filterSection}/>
         </div>
     );
 }
