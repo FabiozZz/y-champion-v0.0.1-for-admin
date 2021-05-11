@@ -1,6 +1,6 @@
 import {BrowserRouter} from "react-router-dom";
 import './app.css';
-import {Button, Col, Container, Navbar, Row} from "react-bootstrap";
+import {Col, Container, Row} from "react-bootstrap";
 import {Route, Switch} from "react-router";
 import {NavHeader} from "./staticComponent/NavHeader/NavHeader";
 import {SideBar} from "./staticComponent/NavSide/SideBar";
@@ -10,6 +10,7 @@ import {AdultTable} from "./Examples/AdultTable";
 import Sidebar from "react-sidebar";
 import React, {useState} from "react";
 import {ChaildTable} from "./Examples/ChaildTable";
+import {AddClient} from "./AddClient/AddClient";
 
 function App() {
     // константы для управления сайдбаром
@@ -70,6 +71,7 @@ function App() {
                                     {/*здесь отоброжается основное содержимое*/}
                                     <Switch>
                                         <Route path={'/exampleTable'} render={() => <ExampleTable/>}/>
+                                        <Route path={'/addUser'} render={() => <AddClient/>}/>
                                         <Route path={'/exampleDiagPie'} render={() => <ExampleDiagrams/>}/>
                                         <Route path={'/adult'} render={() => <AdultTable/>}/>
                                         <Route path={'/child'} render={() => <ChaildTable/>}/>

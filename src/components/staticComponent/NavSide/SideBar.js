@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from '../../../assets/images/logo.svg';
 import './sideBar.css';
-import {Nav, Navbar, Accordion, Card, Collapse, Dropdown, FormControl, Form, Button} from "react-bootstrap";
+import {Nav, Navbar, Accordion, Card} from "react-bootstrap";
 import {NavLink} from "react-router-dom";
 
 export const SideBar = () => {

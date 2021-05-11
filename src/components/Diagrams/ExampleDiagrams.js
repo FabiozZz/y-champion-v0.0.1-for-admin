@@ -1,5 +1,5 @@
 import React from 'react';
-import {Line, Pie} from "react-chartjs-2";
+import {Pie} from "react-chartjs-2";
 const response = [
     {id:1,value: 'Интернет',usage:100},
     {id:2,value: 'Друзья',usage:75},

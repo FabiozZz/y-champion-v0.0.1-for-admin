@@ -46,12 +46,12 @@ export function createTable(some,id){
 
         return (
             <tr key={index}>
-                <td className={id==='code'&&'activeTableItem'}>{el.cardCode}</td>
-                <td className={id==='date'&&'activeTableItem'} style={date}>{el.expireIn}</td>
-                <td className={id==='kka'&&'activeTableItem'} style={row}>{placeholderStatus}</td>
-                <td className={id==='fullName'&&'activeTableItem'} style={row}>{el.fullName}</td>
-                <td className={id==='phone'&&'activeTableItem'}>{el.phone}</td>
-                <td className={id==='course'&&'activeTableItem'}>{el.course}</td>
+                <td className={id==='code'?'activeTableItem':''}>{el.cardCode}</td>
+                <td className={id==='date'?'activeTableItem':''} style={date}>{el.expireIn}</td>
+                <td className={id==='kka'?'activeTableItem':''} style={row}>{placeholderStatus}</td>
+                <td className={id==='fullName'?'activeTableItem':''} style={row}>{el.fullName}</td>
+                <td className={id==='phone'?'activeTableItem':''}>{el.phone}</td>
+                <td className={id==='course'?'activeTableItem':''}>{el.course}</td>
             </tr>
         );
     });

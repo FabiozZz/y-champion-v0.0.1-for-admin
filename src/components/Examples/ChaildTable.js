@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Nav} from "react-bootstrap";
-import {abortAxiosCalling, getContentData, getCourseAdult, getCoursesChild, getCoursesChildDay} from "../../Api/api";
+import {abortAxiosCalling, getContentData, getCoursesChild, getCoursesChildDay} from "../../Api/api";
 import {TableS} from "./Table/Table";
 import {NavLink} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
@@ -237,18 +237,20 @@ export const ChaildTable = ()=> {
      * запускается при каждом рендеринге, просит время проведения занятий,
      * получает и заносит в локальный стейт
      */
-    useEffect(async () => {
-        const day = await getCoursesChild();
-        setTimeOfDay(await day.data)
+    useEffect(() => {
+        (async () => {
+            const day = await getCoursesChild();
+            setTimeOfDay(await day.data)
+        })();
     },[]);
 
     /**
      * прерывает запросы к базе при уничтожении компонента
      */
-    useEffect(async ()=>{
+    useEffect(()=>{
         dispatch(removeSectionData());
-        return ()=>{
-            abortAxiosCalling();
+        return async ()=>{
+            await abortAxiosCalling();
         }
     },[])
 

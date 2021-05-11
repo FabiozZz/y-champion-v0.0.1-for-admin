@@ -202,14 +202,14 @@ export const AdultTable = ()=> {
     /**
      * запускается при каждом рендеринге, запрашивает список видов единоборств и сохраняет в локальный стейт
      */
-    useEffect(async ()=>{
-        const courses = await getCourseAdult();
-        setCourses(await courses.data)
-        dispatch(removeSectionData());
-
+    useEffect(()=>{
+        (async ()=>{
+            const courses = await getCourseAdult();
+            setCourses(await courses.data)
+            dispatch(removeSectionData());
+        })()
         return ()=>{
             abortAxiosCalling();
-
         }
     },[])
 

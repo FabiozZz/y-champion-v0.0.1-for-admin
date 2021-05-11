@@ -14,12 +14,12 @@ import './tables.css';
  * @returns {JSX.Element}
  * @constructor
  */
-export const TableS = (props)=> {
+export const TableS = ({data,cardCode,kka,fullName,date})=> {
     /**
      * создается из полученных через props данных ячейки таблицы
      * @type {*}
      */
-    let dataTable = createTable(props.data)
+    let dataTable = createTable(data?data:[])
 
     /**
      * dispatch от redux
@@ -46,7 +46,7 @@ export const TableS = (props)=> {
         if (id === 'codeFilter') {
             setSearch(target.value);
             if (search !== '') {
-                let copyData = props.data.filter(item=> {
+                let copyData = data.filter(item=> {
                     if (item.cardCode.includes(search)) {
                         return item;
                     }
@@ -57,7 +57,7 @@ export const TableS = (props)=> {
         if (id === 'fullNameFilter') {
             setSearch(target.value);
             if (search !== '') {
-                let copyData = props.data.filter(item=> {
+                let copyData = data.filter(item=> {
                     if (item.fullName.toLowerCase().includes(search.toLowerCase())) {
                         return item;
                     }
@@ -68,7 +68,7 @@ export const TableS = (props)=> {
         if (id === 'phoneFilter') {
             setSearch(target.value);
             if (search !== '') {
-                let copyData = props.data.filter(item=> {
+                let copyData = data.filter(item=> {
                     if (item.phone.includes(search)) {
                         return item;
                     }
@@ -108,7 +108,7 @@ export const TableS = (props)=> {
         <Table className={'table'} id={'search table'} striped bordered hover>
             <thead style={{position: 'sticky', top: '30px', background: 'white'}}>
             <tr>
-                <th onDoubleClick={handleToggleInput} onClick={props.cardCode} id={'code'}>Штрих-код
+                <th onDoubleClick={handleToggleInput} onClick={cardCode} id={'code'}>Штрих-код
 
                     {toggleInput.code && <input id={'codeFilter'} autoFocus type={'text'}
                                                 value={search}
@@ -123,10 +123,10 @@ export const TableS = (props)=> {
                                                 }}/>}
 
                 </th>
-                <th onClick={props.date}>Действителен до:</th>
-                <th title={'количество купленных абониментов'} id={'kka'} onClick={props.kka}>К.К.А.</th>
+                <th onClick={date}>Действителен до:</th>
+                <th title={'количество купленных абониментов'} id={'kka'} onClick={kka}>К.К.А.</th>
 
-                <th onClick={props.fullName} id={'fullName'} onDoubleClick={handleToggleInput}>Ф.И.О.
+                <th onClick={fullName} id={'fullName'} onDoubleClick={handleToggleInput}>Ф.И.О.
 
                     {toggleInput.fullName&&<input id={'fullNameFilter'} autoFocus type="text"
                                                   value={search}
@@ -148,14 +148,14 @@ export const TableS = (props)=> {
                                                value={search}
                                                onChange={handleChangeInput}
                                                onBlur={() => {
-                                                 dispatch(removeFilterSectionData());
-                                                 setSearch('')
-                                                 setToggleInput(prevState => ({
-                                                     ...prevState,
-                                                     phone: false
-                                                 }))
-                                             }
-                                             }/>}
+                                                   dispatch(removeFilterSectionData());
+                                                   setSearch('')
+                                                   setToggleInput(prevState => ({
+                                                       ...prevState,
+                                                       phone: false
+                                                   }))
+                                               }
+                                               }/>}
 
                 </th>
                 <th id={'course'}>Вид единоборств</th>
